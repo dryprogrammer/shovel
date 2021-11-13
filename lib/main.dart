@@ -66,18 +66,18 @@ class _MyHomePageState extends State<MyHomePage> {
   IconButton PlayButton() {
     return IconButton(
         onPressed: () {
-          setState(() {
-            isFocusing = !isFocusing;
-            textController.text = "";
-            focusTextCount = 0;
+          isFocusing = !isFocusing;
+          textController.text = "";
+          focusTextCount = 0;
 
-            text_array = origin_text.split(" ");
-            focusTimer = Timer.periodic(Duration(seconds: 1), (timer) {
+          text_array = origin_text.split(" ");
+          focusTimer = Timer.periodic(Duration(seconds: 1), (timer) {
+            setState(() {
               focusTextCount++;
-              if (focusTextCount > text_array.length) {
-                focusTimer.cancel();
-              }
             });
+            if (focusTextCount > text_array.length) {
+              focusTimer.cancel();
+            }
           });
         },
         icon: Icon(Icons.play_arrow));
